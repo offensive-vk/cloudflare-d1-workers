@@ -2,9 +2,10 @@ import { renderHtml } from "./renderHtml";
 
 export default {
   async fetch(request, env) {
-    const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 3");
+    const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 5");
     const { results } = await stmt.all();
-
+    const username: string = "offensive-vk";
+    
     return new Response(renderHtml(JSON.stringify(results, null, 2)), {
       headers: {
         "content-type": "text/html",
